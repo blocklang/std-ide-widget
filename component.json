@@ -1,0 +1,18 @@
+{
+    "name": "std-widgets-web",
+    "version": "0.0.1",
+    "displayName": "BlockLang standard widgets for web",
+    "description": "BlockLang 的 web 版标准部件库",
+    "category": "Widget",
+    "language": "Typescript",
+    "dev": true,
+    "std": true,
+    "components": [
+        "src/page"
+    ],
+    "api": {
+        "git": "https://github.com/blocklang/std-api-widget.git",
+        "version": "0.0.1"
+    },
+    "appType": "web"
+}

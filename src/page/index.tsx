@@ -1,5 +1,5 @@
-import PageBase from 'std-widget-web/src/page';
-import WidgetDesignableMixin from 'designer-core/src/mixins/WidgetDesignable';
+import PageBase from 'std-widget-web/page';
+import WidgetDesignableMixin from 'designer-core/mixins/WidgetDesignable';
 
 export default class Page extends WidgetDesignableMixin(PageBase) {
 

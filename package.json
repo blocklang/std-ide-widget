@@ -1,6 +1,6 @@
 {
   "name": "std-ide-widget",
-  "version": "0.0.3-alpha.3",
+  "version": "0.0.3-alpha.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocklang/std-ide-widget.git"
@@ -13,21 +13,39 @@
     "test": "dojo test",
     "test:unit": "dojo build --mode unit && dojo test --unit --config local",
     "test:functional": "dojo build --mode functional && dojo test --functional --config local",
-    "test:all": "dojo build --mode unit && dojo build --mode functional && dojo test --all --config local"
+    "test:all": "dojo build --mode unit && dojo build --mode functional && dojo test --all --config local",
+    "precommit": "lint-staged",
+    "prettier": "prettier --write 'src/**/*.{ts,tsx}' 'src/**/*.css' 'tests/**/*.ts'"
   },
   "dependencies": {
-    "@dojo/framework": "^6.0.0",
+    "@dojo/framework": "^6.0.3",
     "@dojo/themes": "^6.0.0",
-    "designer-core": "0.0.1-alpha.2",
-    "std-widget-web": "0.0.4-alpha.2",
+    "designer-core": "~0.0.1-alpha.3",
+    "std-widget-web": "~0.0.4-alpha.2",
     "tslib": "~1.9.1"
   },
   "devDependencies": {
     "@dojo/cli": "^6.0.0",
-    "@dojo/cli-build-app": "^6.0.3",
-    "@dojo/cli-build-widget": "^6.0.0",
+    "@dojo/cli-build-app": "^6.0.4",
+    "@dojo/cli-build-widget": "^6.0.1",
     "@dojo/cli-test-intern": "^6.0.0",
     "@types/node": "~9.6.5",
+    "husky": "3.0.4",
+    "lint-staged": "9.2.5",
+    "prettier": "1.18.2",
     "typescript": "~3.4.5"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": false,
+    "tabWidth": 4,
+    "useTabs": true,
+    "printWidth": 120,
+    "arrowParens": "always"
   }
 }

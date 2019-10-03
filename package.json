@@ -1,6 +1,6 @@
 {
   "name": "std-ide-widget",
-  "version": "0.0.3-alpha.7",
+  "version": "0.0.3-alpha.8",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocklang/std-ide-widget.git"
@@ -21,7 +21,7 @@
     "@dojo/framework": "^6.0.3",
     "@dojo/themes": "^6.0.0",
     "designer-core": "~0.0.1-alpha.6",
-    "std-widget-web": "~0.0.4-alpha.2",
+    "std-widget-web": "~0.0.4-alpha.3",
     "tslib": "~1.9.1"
   },
   "devDependencies": {

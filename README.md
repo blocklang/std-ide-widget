@@ -4,6 +4,8 @@
 
 IDE 版 UI 组件，是 BlockLang 标准库。
 
+注意：**当前仅支持基于类的部件，不支持基于函数的部件**。
+
 约定
 
 1. 引用 [std-widget-web](https://github.com/blocklang/std-widget-web.git) 中的对应组件后，在默认名称后面加上 `Base`，如：

@@ -1,8 +1,8 @@
 {
-    "name": "std-widgets-web",
+    "name": "std-ide-widget",
     "version": "0.0.1",
-    "displayName": "BlockLang standard widgets for web",
-    "description": "BlockLang 的 web 版标准部件库",
+    "displayName": "BlockLang standard widgets for dev",
+    "description": "BlockLang 的 dev 版标准部件库",
     "category": "Widget",
     "language": "Typescript",
     "dev": true,

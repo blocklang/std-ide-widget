@@ -7,42 +7,60 @@ import { stub } from "sinon";
 
 import Page from "../../../src/page";
 import * as css from "../../../src/page/index.m.css";
+import ide from "designer-core/middleware/ide";
+import createMockIdeMiddleware from "designer-core/testing/mocks/middleware/ide";
+import { EditableProperties } from "designer-core/interfaces";
 
 describe("page", () => {
 	it("autoFocus is false", () => {
-		const onFocusStub = stub();
+		const onFocusedStub = stub();
 		const widget = { id: "1", parentId: "-1", widgetCode: "0001", widgetName: "Page", canHasChildren: true };
-		const originalProperties = {};
-		const extendProperties = { onFocus: onFocusStub, onHighlight: () => {}, autoFocus: () => false };
-
-		const page = new Page();
-		page.__setProperties__({
-			onLoad: () => {},
-			widget,
-			originalProperties,
-			extendProperties
+		const extendProperties: EditableProperties = {
+			onFocused: onFocusedStub,
+			onFocusing: () => {},
+			onUnhighlight: () => {},
+			onHighlight: () => {},
+			autoFocus: () => false
+		};
+		const ideMock = createMockIdeMiddleware();
+		const h = harness(() => <Page widget={widget} extendProperties={extendProperties} />, {
+			middleware: [[ide, ideMock]]
 		});
-		page.__render__();
-
-		assert.isTrue(onFocusStub.notCalled);
+		h.expect(() => (
+			<div
+				key="root"
+				onmouseout={() => {}}
+				onmouseover={() => {}}
+				onmouseup={() => {}}
+				classes={[css.root]}
+			></div>
+		));
+		assert.isTrue(onFocusedStub.notCalled);
 	});
 
 	it("autoFocus is true", () => {
-		const onFocusStub = stub();
-
+		const onFocusedStub = stub();
 		const widget = { id: "1", parentId: "-1", widgetCode: "0001", widgetName: "Page", canHasChildren: true };
-		const originalProperties = {};
-		const extendProperties = { onFocus: onFocusStub, onHighlight: () => {}, autoFocus: () => true };
-
-		const page = new Page();
-		page.__setProperties__({
-			onLoad: () => {},
-			widget,
-			originalProperties,
-			extendProperties
+		const extendProperties: EditableProperties = {
+			onFocused: onFocusedStub,
+			onFocusing: () => {},
+			onUnhighlight: () => {},
+			onHighlight: () => {},
+			autoFocus: () => true
+		};
+		const ideMock = createMockIdeMiddleware();
+		const h = harness(() => <Page widget={widget} extendProperties={extendProperties} />, {
+			middleware: [[ide, ideMock]]
 		});
-		page.__render__();
-
-		assert.isTrue(onFocusStub.calledOnce);
+		h.expect(() => (
+			<div
+				key="root"
+				onmouseout={() => {}}
+				onmouseover={() => {}}
+				onmouseup={() => {}}
+				classes={[css.root]}
+			></div>
+		));
+		assert.isTrue(onFocusedStub.calledOnce);
 	});
 });

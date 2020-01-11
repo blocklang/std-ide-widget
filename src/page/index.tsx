@@ -1,11 +1,18 @@
-import PageBase from "std-widget-web/page";
-// 注意：此处引入 default，在 build 时会有警告信息
-import { WidgetDesignableMixin } from "designer-core/mixins/WidgetDesignable";
-
+import { create, tsx } from "@dojo/framework/core/vdom";
+import { PageProperties } from "std-widget-web/page";
+import ide from "designer-core/middleware/ide";
 import * as css from "./index.m.css";
 
-export default class Page extends WidgetDesignableMixin(PageBase) {
-	protected getRootCssClass() {
-		return css.root;
-	}
-}
+const factory = create({ ide }).properties<PageProperties>();
+
+export default factory(function Page({ children, middleware: { ide } }) {
+	ide.config("root");
+	ide.tryFocus();
+	const activeWidgetEvents = ide.activeWidgetEvents();
+
+	return (
+		<div key="root" classes={[css.root]} {...activeWidgetEvents}>
+			{children()}
+		</div>
+	);
+});

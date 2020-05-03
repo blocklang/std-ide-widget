@@ -7,9 +7,9 @@ import { stub } from "sinon";
 
 import Page from "../../../src/page";
 import * as css from "../../../src/page/index.m.css";
-import ide from "designer-core/middleware/ide";
-import createMockIdeMiddleware from "designer-core/testing/mocks/middleware/ide";
-import { EditableProperties } from "designer-core/interfaces";
+import ide from "@blocklang/designer-core/middleware/ide";
+import createMockIdeMiddleware from "@blocklang/designer-core/testing/mocks/middleware/ide";
+import { EditableProperties } from "@blocklang/designer-core/interfaces";
 
 describe("page", () => {
 	it("autoFocus is false", () => {
@@ -20,11 +20,11 @@ describe("page", () => {
 			onFocusing: () => {},
 			onUnhighlight: () => {},
 			onHighlight: () => {},
-			autoFocus: () => false
+			autoFocus: () => false,
 		};
 		const ideMock = createMockIdeMiddleware();
 		const h = harness(() => <Page widget={widget} extendProperties={extendProperties} />, {
-			middleware: [[ide, ideMock]]
+			middleware: [[ide, ideMock]],
 		});
 		h.expect(() => (
 			<div
@@ -46,11 +46,11 @@ describe("page", () => {
 			onFocusing: () => {},
 			onUnhighlight: () => {},
 			onHighlight: () => {},
-			autoFocus: () => true
+			autoFocus: () => true,
 		};
 		const ideMock = createMockIdeMiddleware();
 		const h = harness(() => <Page widget={widget} extendProperties={extendProperties} />, {
-			middleware: [[ide, ideMock]]
+			middleware: [[ide, ideMock]],
 		});
 		h.expect(() => (
 			<div

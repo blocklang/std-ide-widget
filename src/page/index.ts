@@ -1,5 +1,5 @@
 import { create, v } from "@dojo/framework/core/vdom";
-import { PageProperties } from "std-widget-web/page";
+import { PageProperties } from "@blocklang/std-widget-web/page";
 import ide from "@blocklang/designer-core/middleware/ide";
 import * as css from "./index.m.css";
 
